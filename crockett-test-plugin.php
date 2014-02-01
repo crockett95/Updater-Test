@@ -88,3 +88,9 @@ if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
 	add_action( 'plugins_loaded', array( 'Crockett_Test_Plugin_Admin', 'get_instance' ) );
 
 }
+
+function CrockettTestPlugin_github_updater () {
+    include('updater/GithubPluginUpdater.php');
+    $updater = new WpGithubPluginUpdater(__FILE__);
+}
+add_action('admin_init', "CrockettTestPlugin_github_updater");
